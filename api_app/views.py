@@ -10,7 +10,7 @@ from api_app.forms import BroastForm
 class BroastViewSet(ModelViewSet):
     serializer_class = BroastSerializer
     basename = 'broast'
-    queryset = Broast.objects.all()
+    queryset = Broast.objects.all().order_by('-date')
 
     @action(detail=True,methods=['post'])
     def upvote(self, request, pk):
@@ -52,5 +52,5 @@ class BroastViewSet(ModelViewSet):
 
     @action(detail=False)  
     def new_post(self, request):
-        
+
         return Response('')
